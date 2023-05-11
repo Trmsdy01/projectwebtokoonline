@@ -1,2 +1,2 @@
 # projectwebtokoonline
-Ini adalah project toko online untuk tugas pemograman web
+Ini adalah Halaman Progress Project Toko Online untuk tugas pemograman web
