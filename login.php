@@ -1,7 +1,7 @@
 <?php 
 // koneksi ke database
 session_start(); 
-$koneksi = mysqli_connect("localhost", "root", "", "dbtoko"); 
+include 'koneksi.php';
 
  
 ?>
@@ -48,7 +48,7 @@ $koneksi = mysqli_connect("localhost", "root", "", "dbtoko");
             <button class="signin" name="login" >Sign In</button>
 
             <div class="text-center">
-            <span class="d-inline">Don't Have an Account? <a href="#" class="signup d-inline text">Sign Up fo Free</a>
+            <span class="d-inline">Don't Have an Account? <a href="daftar.php" class="signup d-inline text">Sign Up fo Free</a>
             </span>
             </div>
             </div>
@@ -113,7 +113,17 @@ $koneksi = mysqli_connect("localhost", "root", "", "dbtoko");
             //simpan di session pelanggan
             $_SESSION["pelanggan"] = $akun;
             echo "<script>alert('Login Success');</script>";
-            echo "<script>location='index.php'</script>";
+
+            // jika sudah belanja
+            if (isset($_SESSION["keranjang"]) OR !empty($_SESSION["keranjang"]))
+            {
+                echo "<script>location='checkout.php'</script>";
+            }
+            else
+            {
+                echo "<script>location='index.php'</script>";
+            }
+            
         }
         else
         {

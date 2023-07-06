@@ -10,6 +10,7 @@ $id_produk=$_GET["id"];
 $ambil = $koneksi->query("SELECT * FROM produk WHERE id_produk='$id_produk'");
 $detail = $ambil->fetch_assoc();
 
+
 // echo "<pre>";
 // print_r($detail);
 // echo "</pre>";
@@ -54,8 +55,17 @@ include 'menu.php';
         <div class="col-lg-5">
             <figure class="figure">
                 <img src="../projectFinal/admin/fotoproduk/<?php echo $detail["foto_produk"]?>" class="figure-img img-fluid" style="border-radius: 5px; width: 450px;">
-              </figure> 
-        </div>
+                <figcaption class="figure-caption d-flex justify-content-evenly">
+                <?php $take=$koneksi->query("SELECT * FROM produk_foto WHERE id_produk='$id_produk'")?>
+                <?php while($perfoto=$take->fetch_assoc()){ ?>
+                    <a href="detail1.php?id=<?php echo $perfoto["nama_produk_foto"]?>">
+                        <img src="../projectFinal/admin/fotoproduk/<?php echo $perfoto["nama_produk_foto"]?>" class="figure-img img-fluid" style="border-radius: 5px; width: 70px;">
+                    </a>
+                <?php }?>  
+                </figcaption>
+              </figure>
+          </div>
+
             
         <div class="col-lg-7">
             <form method="post">
@@ -95,74 +105,15 @@ include 'menu.php';
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Product Details</button>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="review-tab" data-bs-toggle="tab" data-bs-target="#review" type="button" role="tab" aria-controls="review" aria-selected="false">Review</button>
-      </li>
     </ul>
     <div class="tab-content p-3" id="myTabContent">
       <div class="tab-pane fade show active deskripsi" id="description" role="tabpanel" aria-labelledby="description-tab">
           <h4><?php echo $detail["nama_produk"]?></h4>
           <p><?php echo $detail["deskripsi_produk"]?></p>
-      </div>  
-      <div class="tab-pane fade review" id="review" role="tabpanel" aria-labelledby="review-tab">
-        <div class="row">
-          <div class="col-1">
-            <img src="../projectFinal/foto/hange.png" class="review-img rounded-circle">
-          </div>
-          <div class="col">
-            <h5 class="review-name">Hange Zoe</h5>
-            <p class="review-des">Produk Original, Packing Rapi, Pengiriman Cepat</p>
-          </div>
-        </div>
+      </div>
 <!-- Detail -->
 
-<!-- Review -->
-        <div class="row">
-          <div class="col-1">
-            <img src="../projectFinal/foto/levi.png" class="review-img rounded-circle">
-          </div>
-          <div class="col">
-            <h5 class="review-name">Levi Ackerman</h5>
-            <p class="review-des">Produk Original, Packing Rapi, Pengiriman Cepat</p>
-          </div>
-        </div>
 
-        <div class="row">
-          <div class="col-1">
-            <img src="../projectFinal/foto/eren.png" class="review-img rounded-circle">
-          </div>
-          <div class="col">
-            <h5 class="review-name">Eren Yeager</h5>
-            <p class="review-des">Produk Original, Packing Rapi, Pengiriman Cepat</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-1">
-            <img src="../projectFinal/foto/jean.png" class="review-img rounded-circle">
-          </div>
-          <div class="col">
-            <h5 class="review-name">Jean</h5>
-            <p class="review-des">Produk Original, Packing Rapi, Pengiriman Cepat</p>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-1">
-            <img src="../projectFinal/foto/reiner.png " class="review-img rounded-circle">
-          </div>
-          <div class="col">
-            <h5 class="review-name">Reiner Braun</h5>
-            <p class="review-des">Produk Original, Packing Rapi, Pengiriman Cepat</p>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
 
 <!-- Single Procduct -->

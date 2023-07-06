@@ -1,7 +1,7 @@
 <?php 
 // koneksi ke database
 session_start(); 
-$koneksi = mysqli_connect("localhost", "root", "", "dbtoko"); 
+include 'koneksi.php';
 ?>
 
 
@@ -11,7 +11,8 @@ $koneksi = mysqli_connect("localhost", "root", "", "dbtoko");
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+     <!-- fontawesome cdn -->
+     <link rel="stylesheet" href="../projectFinal/fontawesome/css/all.min.css">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../projectFinal/css/style.css">
@@ -21,39 +22,9 @@ $koneksi = mysqli_connect("localhost", "root", "", "dbtoko");
 <body style="background-color: #DCDCDC;">
 
 <!-- navbar -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-  <a class="navbar-brand mb-2" href="index.php">
-      <img src="../projectFinal/foto/paw1.png" alt="" width="30" height="30" class="d-inline-block align-text-top me-2">RokaJelly Shop</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active textForm" aria-current="page" href="index.php">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link textForm" href="keranjang.php">Cart</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link textForm" href="checkout.php">Checkout</a>
-        </li>
-      </ul>
-               <!--jika sudah login(ada sesssion pelanggan)-->
-               <?php if(isset($_SESSION["pelanggan"])):?>
-            <form class="d-flex me-3">
-                <a class="btn btn-outline-secondary text-light textForm" href="logout.php" role="button">Sign Out</a>
-            </form>
-          <!--jika sudah login(ada sesssion pelanggan)-->
-          <?php else: ?>
-            <form class="d-flex me-3">
-                <a class="btn btn-outline-secondary text-light textForm" href="login.php" role="button">Sign In</a>
-            </form>
-            <?php endif ?>
-    </div>
-  </div>
-</nav>
+<?php  
+include 'menu.php';
+?>
 <!-- navbar -->
 
 
@@ -111,7 +82,7 @@ $koneksi = mysqli_connect("localhost", "root", "", "dbtoko");
               <h6 class="card-title text-center textForm"><?php echo $perproduk['nama_produk'] ?></h6>
               <p class="card-text text-center">Rp. <?php echo number_format($perproduk['harga_produk']); ?></p>
               <div class="d-grid gap-2">
-              <a href="detail.php" class="btn btn-outline-dark" type="button">Detail</a>
+              <a href="detail.php?id=<?php echo $perproduk['id_produk'];?>" class="btn btn-outline-dark" type="button" name="detail">Detail</a>
               <a href="beli.php?id=<?php echo $perproduk['id_produk']; ?>" class="btn btn-dark " type="button">Buy</a>
               </div>
             </div>
