@@ -28,6 +28,7 @@ if (!isset($_SESSION['admin']))
     <link href="assets/css/custom.css" rel="stylesheet" />
      <!-- GOOGLE FONTS-->
    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+   <script src="assets/js/jquery-1.10.2.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -44,7 +45,7 @@ if (!isset($_SESSION['admin']))
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"> &nbsp; <a href="index.php?halaman=logout" class="btn btn-danger square-btn-adjust">Logout</a> </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -54,11 +55,13 @@ font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-
                     <img src="assets/img/me.jpg" class="user-image img-responsive"/>
 					</li>
 		
-                    <li><a href="index.php"><i class="fa fa-dashboard fa-3x"></i>Home</a></li>
-                    <li><a href="index.php?halaman=produk"><i class="fa fa-dashboard fa-3x"></i>Produk</a></li>
-                    <li><a href="index.php?halaman=pembelian"><i class="fa fa-dashboard fa-3x"></i>Pembelian</a></li>
-                    <li><a href="index.php?halaman=pelanggan"><i class="fa fa-dashboard fa-3x"></i>Pelanggan</a></li>
-                    <li><a href="index.php?halaman=logout"><i class="fa fa-dashboard fa-3x"></i>LogOut</a></li>
+                    <li><a href="index.php"><i class="fa fa-dashboard "></i>Home</a></li>
+                    <li><a href="index.php?halaman=kategori"><i class="fa fa-cube"></i>Kategori</a></li>
+                    <li><a href="index.php?halaman=produk"><i class="fa fa-tags"></i>Produk</a></li>
+                    <li><a href="index.php?halaman=pembelian"><i class="fa fa-shopping-cart"></i>Pembelian</a></li>
+                    <li><a href="index.php?halaman=laporan_pembelian"><i class="fa fa-file"></i>Laporan</a></li>
+                    <li><a href="index.php?halaman=pelanggan"><i class="fa fa-user"></i>Pelanggan</a></li>
+                    <li><a href="index.php?halaman=logout"><i class="fa fa-sign-out"></i>LogOut</a></li>
 
                 </ul>
                
@@ -115,6 +118,35 @@ font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-
                     {
                         include 'logout.php';
                     }
+                    elseif ($_GET['halaman']=="pembayaran")
+                    {
+                        include 'pembayaran.php';
+                    }
+                    elseif ($_GET['halaman']=="laporan_pembelian")
+                    {
+                        include 'laporan_pembelian.php';
+                    }
+                    elseif ($_GET['halaman']=="kategori")
+                    {
+                        include 'kategori.php';
+                    }
+                    elseif ($_GET['halaman']=="tambahkategori")
+                    {
+                        include 'tambahkategori.php';
+                    }
+                    elseif ($_GET['halaman']=="hapuskategori")
+                    {
+                        include 'hapuskategori.php';
+                    }
+                    elseif ($_GET['halaman']=="detailproduk")
+                    {
+                        include 'detailproduk.php';
+                    }
+                    elseif ($_GET['halaman']=="hapusfotoproduk")
+                    {
+                        include 'hapusfotoproduk.php';
+                    }
+                    
                 }
                 else
                 {
@@ -130,7 +162,7 @@ font-size: 16px;"> &nbsp; <a href="login.html" class="btn btn-danger square-btn-
      <!-- /. WRAPPER  -->
     <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
     <!-- JQUERY SCRIPTS -->
-    <script src="assets/js/jquery-1.10.2.js"></script>
+    
       <!-- BOOTSTRAP SCRIPTS -->
     <script src="assets/js/bootstrap.min.js"></script>
     <!-- METISMENU SCRIPTS -->
